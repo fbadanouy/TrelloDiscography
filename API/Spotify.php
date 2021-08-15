@@ -12,7 +12,20 @@ class Spotify
 
     public function __construct() {
 
-        $config = json_decode(file_get_contents('config.json'));
+        try {
+
+            $config = json_decode(file_get_contents('config.json'));
+
+            if ($config->SPOTIFY_CLIENT_ID === 'xxx' OR $config->SPOTIFY_CLIENT_SECRET === 'xxx') {
+                throw new Exception();
+            }
+
+        } catch (Exception $e) {
+
+            print_r('ERROR: Invalid config.json - Check the handy guide to fill the config.json file on readme file.');
+            exit;
+
+        }
 
         $session = new Session(
             $config->SPOTIFY_CLIENT_ID,

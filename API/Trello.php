@@ -3,6 +3,7 @@
 namespace API;
 
 use \Curl\Curl;
+use Exception;
 
 class Trello
 {
@@ -12,7 +13,20 @@ class Trello
     public function __construct()
     {
 
-        $config = json_decode(file_get_contents('config.json'));
+        try {
+
+            $config = json_decode(file_get_contents('config.json'));
+
+            if ($config->TRELLO_API_KEY === 'xxx' OR $config->TRELLO_TOKEN === 'xxx') {
+                throw new Exception();
+            }
+
+        } catch (Exception $e) {
+
+            print_r('ERROR: Invalid config.json - Check the handy guide to fill the config.json file on readme file.');
+            exit;
+
+        }
 
         $this->apiKey   = $config->TRELLO_API_KEY;
         $this->token    = $config->TRELLO_TOKEN;
