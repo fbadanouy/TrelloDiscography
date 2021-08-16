@@ -35,9 +35,9 @@ foreach ($discography as $d) {
 function getDecade($name)
 {
 
-    $d = substr($name, 0, 4) - 10;
+    $d = substr($name, 0, 4);
 
-    return ceil($d/10)*10;
+    return floor($d/10)*10;
 
 }
 
