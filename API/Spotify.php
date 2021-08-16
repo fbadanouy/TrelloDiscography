@@ -42,7 +42,7 @@ class Spotify
 
     public function getCover($album)
     {
-        $search = $this->api->search($album . ' Bob Dylan', 'album');
+        $search = $this->api->search($album, 'album');
 
         $i = 0;
 

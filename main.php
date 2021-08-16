@@ -28,7 +28,8 @@ foreach ($discography as $d) {
     }
 
     $cardId = $trello->createCard($listId, substr($d,5), $d);
-    $trello->updateCardCover($cardId, $spotify->getCover(substr($d,5)));
+    $albumName = $words = preg_replace('/[0-9]+/', '', substr($d,5));
+    $trello->updateCardCover($cardId, $spotify->getCover($albumName . ' Bob Dylan'));
 
 }
 
