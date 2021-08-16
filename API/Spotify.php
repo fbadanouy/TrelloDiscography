@@ -22,7 +22,7 @@ class Spotify
 
         } catch (Exception $e) {
 
-            print_r('ERROR: Invalid config.json - Check the handy guide to fill the config.json file on readme file.');
+            print_r('ERROR: Invalid config.json - Check the Usage section on the readme file.');
             exit;
 
         }
